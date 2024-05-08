@@ -1,0 +1,357 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,400;1,600&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;1,400;1,600&family=Pacifico&display=swap");
+:root {
+  --song_name: "We don't talk anymore";
+  --content-intro: "Nguyễn Khải Nghiêm";
+  --time_intro: 3s;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.intro {
+  max-width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.intro::before {
+  content: var(--content-intro);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  opacity: 0;
+  font-size: 60px;
+  color: rgba(154, 154, 154, 0.2);
+  font-family: "Pacifico", cursive;
+  text-transform: capitalize;
+  animation: introA var(--time_intro) linear forwards;
+  z-index: 99999;
+}
+
+@keyframes introA {
+  0% {
+    color: 0.2;
+    opacity: 1;
+  }
+  20% {
+    color: rgba(154, 154, 154, 0.4);
+    opacity: 1;
+  }
+  40% {
+    color: rgba(154, 154, 154, 1);
+    opacity: 1;
+  }
+  50% {
+    color: rgba(154, 154, 154, 1);
+    opacity: 1;
+  }
+  60% {
+    color: rgba(154, 154, 154, 0.4);
+    opacity: 1;
+  }
+  85% {
+    color: rgba(154, 154, 154, 0.2);
+    opacity: 1;
+  }
+  100% {
+    color: rgba(154, 154, 154, 0);
+    opacity: 0;
+  }
+}
+
+.wrapper {
+  position: absolute;
+  z-index: 9;
+  user-select: none;
+  width: 500px;
+  /* overflow: hidden; */
+}
+
+.infor {
+  text-align: center;
+  margin-bottom: 36px;
+  padding: 0 15px;
+}
+
+.infor img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid rgb(61, 59, 59);
+  background-position: center;
+  margin-bottom: 10px;
+  cursor: zoom-in;
+}
+
+.author {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 4px;
+}
+
+.bio {
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.music {
+  font-size: 17px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 15px 40px 15px 70px;
+  margin: 0 50px;
+  background-color: rgba(0, 0, 0, 0.18);
+  color: #fff;
+  text-align: left;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.music::before {
+  content: "\f04b";
+  position: absolute;
+  left: 28px;
+  color: #fff;
+  font-size: 20px;
+  font-family: "FontAwesome";
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.music--playing.music::before {
+  content: "\f04c";
+}
+
+.song_button {
+  position: absolute;
+  left: 0;
+  height: 100px;
+  width: 60px;
+}
+
+.song_name {
+  overflow: hidden;
+  width: 100%;
+  height: 20px;
+  position: relative;
+}
+
+.song_name::before {
+  content: var(--song_name);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  transition: all 1s ease;
+}
+
+.song_name::after {
+  content: var(--song_name);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: -320px;
+  transition: all 1s ease;
+}
+
+.music--playing .song_name::before,
+.music--playing .song_name::after {
+  animation: nameAni 8s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes nameAni {
+  0% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(-320px);
+  }
+  100% {
+    transform: translateX(-320px);
+  }
+}
+
+.link {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.link__list__item {
+  list-style: none;
+  background-color: #fff;
+  border: 2px solid #dce0e3;
+  border-radius: 44px;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  margin-top: 14px;
+  position: relative;
+  transition: width 0.5s ease;
+  animation: slideA 500ms ease-out forwards;
+}
+
+.link__list__item:nth-child(1) {
+  transform: translateX(-100px);
+  animation-delay: calc(var(--time_intro) - 2ms);
+}
+.link__list__item:nth-child(2) {
+  transform: translateX(100px);
+  animation-delay: calc(var(--time_intro) + 100ms);
+}
+.link__list__item:nth-child(3) {
+  transform: translateX(-100px);
+  animation-delay: calc(var(--time_intro) + 200ms);
+}
+
+.link__list__item:nth-child(4) {
+  transform: translateX(100px);
+  animation-delay: calc(var(--time_intro) + 300ms);
+}
+
+@keyframes slideA {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.link__list__item:hover {
+  background-color: #dce0e3;
+  color: #dce0e3;
+  cursor: pointer;
+}
+
+.link__list__item__icon {
+  position: absolute;
+  font-size: 24px;
+  margin-left: 16px;
+}
+
+.link__list__item__nameSocial {
+  color: #35414c;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-image: url("../img/sea.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 65%;
+  filter: brightness(0.8);
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 500px;
+  }
+
+  .intro::before {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    width: 440px;
+  }
+
+  .music {
+    padding: 15px 30px 15px 60px;
+    margin: 0 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .wrapper {
+    width: 400px;
+  }
+
+  .intro::before {
+    font-size: 36px;
+  }
+
+  .music {
+    padding: 15px 20px 15px 50px;
+    margin: 0 20px;
+  }
+
+  .music::before {
+    left: 20px;
+  }
+
+  .song_name::before,
+  .song_name::after {
+    width: 120%;
+  }
+
+  @keyframes nameAni {
+    0% {
+      transform: translateX(0);
+    }
+    75% {
+      transform: translateX(-280px);
+    }
+    100% {
+      transform: translateX(-280px);
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wrapper {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .infor img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .intro::before {
+    font-size: 28px;
+  }
+
+  .wrapper {
+    width: 290px;
+  }
+}
