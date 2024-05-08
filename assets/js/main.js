@@ -49,6 +49,6 @@ const today = new Date();
 const dayBd = today.getDate();
 const monthBd = today.getMonth() + 1;
 
-if (dayBd === 8 && monthBd === 5) {
-    document.documentElement.style.setProperty('--content-intro', 'Khải Nghiêm sinh nhật vui vẻ!');
+if ((dayBd === 28 && monthBd === 4) || (dayBd === 8 && monthBd === 5)) {
+    document.documentElement.style.setProperty('--content-intro', '"Khải Nghiêm sinh nhật vui vẻ!"');
 }
